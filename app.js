@@ -54,7 +54,7 @@ function createAList() {
     // Add an event listener to add tasks
     addButton.addEventListener("click", () => {
       let createAnIncompleteList =
-        createAContainer.querySelector(".incomplete-tasks");
+      createAContainer.querySelector(".incomplete-tasks");
   
       // Create a new list item
       let createList = document.createElement("li");
@@ -97,8 +97,7 @@ function createAList() {
     createAContainer.addEventListener("change", (event) => {
       if (event.target.type === "checkbox") {
         const listItem = event.target.parentElement;
-        const incompleteList =
-          createAContainer.querySelector(".incomplete-tasks");
+        const incompleteList = createAContainer.querySelector(".incomplete-tasks");
         const completeList = createAContainer.querySelector("#complete-tasks");
   
         if (event.target.checked) {
@@ -141,26 +140,23 @@ function createAList() {
       if (event.target.classList.contains("delete")) {
         const listItem = event.target.parentElement;
         const list = listItem.parentElement;
-  
         // Remove the clicked item from the list
         list.removeChild(listItem);
       }
       saveToLocalStorage();
     });
   }
-  // SAVED DATA
+
+  // SAVE DATA
   function saveToLocalStorage() {
     const divContainer = document.getElementsByClassName("container");
     const elementArray = Array.from(divContainer);
-  
     // Create an array to hold serialized HTML content
     const serializedDivs = [];
-  
     elementArray.forEach(function (element) {
       const serializedDiv = element.innerHTML;
       serializedDivs.unshift(serializedDiv);
     });
-  
     // Convert the array to JSON and store it in local storage
     const attachJSON = JSON.stringify(serializedDivs);
     localStorage.setItem("divContainerData", attachJSON);
@@ -175,9 +171,7 @@ function createAList() {
   
       // Get input name of the list form
       let getForm = document.querySelector(".nameOfTheList");
-  
-      // Loop through the array and create a container for each HTML string
-      serializedDivs.forEach(function (containerHeading) {
+        serializedDivs.forEach(function (containerHeading) {
         // Create a container
         let createAContainer = document.createElement("div");
         createAContainer.className = "container";
@@ -235,17 +229,14 @@ function createAList() {
             if (event.target.classList.contains("delete")) {
               const listItem = event.target.parentElement;
               const list = listItem.parentElement;
-  
-              // Remove the clicked item from the list
               list.removeChild(listItem);
             }
             saveToLocalStorage();
           });
         }
-        //
       });
     }
-    /////////////
+
     // Define the click event handler
     function addButtonClickHandler(event) {
       if (event.target.classList.contains("addButtonItems")) {
@@ -283,10 +274,10 @@ function createAList() {
         createDeleteButton.className = "delete";
         createDeleteButton.innerHTML = "delete";
         createList.appendChild(createDeleteButton);
-        // Append the new list item to the incomplete tasks list within this container
+        // Append the new list item to the incomplete tasks list within the container
         incompleteList.appendChild(createList);
   
-        // Save to local storage (implement this function)
+        // Save to local storage
         saveToLocalStorage();
   
         // Remove the event listener after it's executed once
@@ -294,7 +285,7 @@ function createAList() {
       }
     }
   
-    // Add the click event listener to both containers
+    // Add the click event listener to containers
     document.querySelectorAll(".container").forEach((container) => {
       container.addEventListener("click", addButtonClickHandler);
     });
@@ -303,12 +294,15 @@ function createAList() {
   let addToDoListLayOut = document.getElementById("addButton");
   addToDoListLayOut.addEventListener("click", createAList);
   
-  //delete Local storage
-  
-  function deleteLocalStorage() {
-    localStorage.clear();
-    location.reload();
-  }
-  
-  // load
+  // load data from local storage
   window.addEventListener("load", loadFromLocalStorage);
+
+    //delete Local storage
+  
+    function deleteLocalStorage() {
+      localStorage.clear();
+      location.reload();
+    }
+  
+    const getDeleteButton = document.getElementById("deleteButton");
+    getDeleteButton.addEventListener("click",deleteLocalStorage);

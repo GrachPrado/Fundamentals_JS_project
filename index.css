@@ -1,12 +1,17 @@
-/* Basic Style */
-
 body {
 	background: #fff;
 	color: #333;
 	font-family: Lato, sans-serif;
 	background-color:#e4e4e4;
+	overflow-x: hidden;
 }
-
+.nameOfTheList *{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
 .container {
 	display: block;
 	width: 400px;
@@ -51,6 +56,8 @@ button {
 	margin: 10px 0 0;
 	font-family: Lato, sans-serif;
 	cursor: pointer;
+	height: 40px;
+	width: 130px;
 }
 
 button:hover {
